@@ -2,11 +2,11 @@ import json  # ler as informçãoes consumidas através do URL
 import requests  # para consumir url externo
 from time import sleep
 
-print('\n+---------+---------+---------+---------+----------+ \n'
-      f'|         --> Cotação \033[1;93mBITCOIN\033[m para BRL <--         | \n'
-      f'+---------+---------+---------+---------+----------+ \n'
-      f'|         --> Cotação \033[1;95mETHEREUM\033[m para BRL <--        | \n'
-      f'+---------+---------+---------+---------+----------+ \n')
+print('\n+-------+---------+--------+--------+--------+ \n'
+      f'|      --> Cotação \033[1;93mBITCOIN\033[m para BRL <--      | \n'
+      f'+-------+---------+---------+---------+------+ \n'
+      f'|      --> Cotação \033[1;95mETHEREUM\033[m para BRL <--     | \n'
+      f'+-------+---------+--------+--------+--------+ \n')
 
 # modalidade - 1 2 3
 criptomoeda = input('\033[1;93mBITCOIN\033[m ou \033[1;95mETHEREUM\033[m:').upper().strip()

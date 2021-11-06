@@ -4,22 +4,31 @@ import requests
 
 
 def cotacao_eth_btc():
-    print('\n+-------+-------+-------+-------+--------+ \n'
-          f'|    --> Cotação \033[1;94mBITCOIN\033[m para BRL <--    | \n'
-          f'+-------+-------+-------+-------+--------+ \n'
-          f'|    --> Cotação \033[1;95mETHEREUM\033[m para BRL <--   | \n'
-          f'+-------+-------+-------+-------+--------+ \n')
+    print('\n+------+-------+-------+-------+-------+ \n'
+          f'|    -> Cotação \033[1;94mBITCOIN\033[m para BRL <-    | \n'
+          f'+-------+-------+-------+-------+------+ \n'
+          f'|    -> Cotação \033[1;95mETHEREUM\033[m para BRL <-   | \n'
+          f'+------+-------+-------+-------+-------+ \n')
 
-    criptoMoeda = input('BCT ou ETH?').upper().strip()
+    criptoMoeda = input('BCT ou ETH?').strip()
 
     while True:
-        api = requests.get(url=f'https://www.mercadobitcoin.net/api/{criptoMoeda}/ticker/')
-        json_data = json.loads(api.text)
+        usdbrl = requests.get(url=f'http://economia.awesomeapi.com.br/json/last/USD-BRL,EUR-BRL')
+        json_data_ = json.loads(usdbrl.text)
 
-        api = float(json_data['ticker']['last'])
-        apiLow = float(json_data['ticker']['low'])
-        apiHigh = float(json_data['ticker']['high'])
-        sleep(0.8)
+        btc_eth = requests.get(url=f'https://www.mercadobitcoin.net/api/{criptoMoeda}/ticker/')
+        json_data_btc_eth = json.loads(btc_eth.text)
+
+        api_usdbrl = float(json_data_['USDBRL']['bid'])
+        api_eurbrl = float(json_data_['EURBRL']['bid'])
+
+        api = float(json_data_btc_eth['ticker']['last'])
+        apiLow = float(json_data_btc_eth['ticker']['low'])
+        apiHigh = float(json_data_btc_eth['ticker']['high'])
+        sleep(0.5)
+
+        print(f'Preço atual do dolar converito em real US${api_usdbrl:.2f} \n'
+              f'Preço atual do euro convertido em real Є{api_eurbrl:.2f}')
 
         print('+-----------+-----------+-----------+ \n'
               f'|                                   |'
@@ -28,6 +37,7 @@ def cotacao_eth_btc():
               f'| Maior preço:........ R${apiHigh:.2f}   |\n'
               f'|                                   |\n'
               '+-----------+-----------+-----------+')
+        break
 
 
 cotacao_eth_btc()
