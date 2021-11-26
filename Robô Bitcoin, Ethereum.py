@@ -2,11 +2,11 @@ import json  # ler as informçãoes consumidas através do URL
 import requests  # para consumir url externo
 from time import sleep
 
-print('\n+-------+---------+--------+--------+--------+ \n'
-      f'|      --> Cotação \033[1;93mBITCOIN\033[m para BRL <--      | \n'
-      f'+-------+---------+---------+---------+------+ \n'
-      f'|      --> Cotação \033[1;95mETHEREUM\033[m para BRL <--     | \n'
-      f'+-------+---------+--------+--------+--------+ \n')
+print('\n+------+-------+-------+-------+-------+ \n'
+      f'|    -> Cotação \033[1;94mBITCOIN\033[m para BRL <-    | \n'
+      f'+-------+-------+-------+-------+------+ \n'
+      f'|    -> Cotação \033[1;95mETHEREUM\033[m para BRL <-   | \n'
+      f'+------+-------+-------+-------+-------+ \n')
 
 # modalidade - 1 2 3
 criptomoeda = input('\033[1;93mBITCOIN\033[m ou \033[1;95mETHEREUM\033[m:').upper().strip()
@@ -29,7 +29,8 @@ if modalidade == '3':
         print(f'\033[1;91m{resultado}\033[m')
         sleep(2.5)
 
-        if compra >= resultado:  # quando o resultado for maior ou igual ao valor digitado ele enviará mensagem de vender
+        # quando o resultado for maior ou igual ao valor digitado ele enviará mensagem de vender
+        if compra >= resultado:
             print('\n$$$ Hora de comprar ativos! $$$$')
             break
 
@@ -47,8 +48,9 @@ elif modalidade == '2':
         print(f'\033[1;91m{resultado}\033[m')
         sleep(2.5)
 
-        if compra >= resultado:  # quando o resultado for maior ou igual ao valor digitado ele enviará mensagem de vender
-            print(f'\nHora de vender seus ativos à {resultado}')
+        # quando o resultado for maior ou igual ao valor digitado ele enviará mensagem de vender
+        if compra >= resultado:
+            print(f'\nHora de vender seus ativos à {resultado}')  #
             break
 else:
     venda = input(f'\nPor quanto você deseja seu vender o {criptomoeda} Ex: {resultado} ')
